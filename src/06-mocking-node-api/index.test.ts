@@ -24,9 +24,10 @@ describe('doStuffByTimeout', () => {
     jest.useRealTimers();
   });
 
-  test.skip('should set timeout with provided callback and timeout', () => {
+  test('should set timeout with provided callback and timeout', () => {
     const callback = jest.fn();
     const timeout = 1000;
+    jest.spyOn(global, 'setTimeout');
     doStuffByTimeout(callback, timeout);
     expect(setTimeout).toHaveBeenCalledWith(callback, timeout);
   });
@@ -49,9 +50,10 @@ describe('doStuffByInterval', () => {
     jest.useRealTimers();
   });
 
-  test.skip('should set interval with provided callback and timeout', () => {
+  test('should set interval with provided callback and timeout', () => {
     const callback = jest.fn();
     const interval = 1000;
+    jest.spyOn(global, 'setInterval');
     doStuffByInterval(callback, interval);
     expect(setInterval).toHaveBeenCalledWith(callback, interval);
   });
